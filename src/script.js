@@ -42,23 +42,23 @@ scene.add(pointLight)
 
 //Light 2
 const pointLight2 = new THREE.PointLight(0xff0000, 2)
-pointLight2.position.set(-1.65,1,-0.8) 
-pointLight2.intensity=1
+pointLight2.position.set(-1.35,1,-1.19) 
+pointLight2.intensity=6.8
 scene.add(pointLight2)
 
 const light2 = gui.addFolder('Light 1')
 light2.add(pointLight2.position, 'x').min(-3).max(3).step(0.01)
 light2.add(pointLight2.position, 'y').min(-3).max(3).step(0.01)
 light2.add(pointLight2.position, 'z').min(-3).max(3).step(0.01)
-light2.add(pointLight2, 'intensity').min(-3).max(3).step(0.01)
+light2.add(pointLight2, 'intensity').min(-3).max(5).step(0.01)
 
 const pointLightHelper = new THREE.PointLightHelper(pointLight2, 1)
 scene.add(pointLightHelper)
 
 //Light 3
-const pointLight3 = new THREE.PointLight(0x0000ff, 2)
-pointLight3.position.set(-1.65,1,-0.8) 
-pointLight3.intensity=1
+const pointLight3 = new THREE.PointLight(0x9d81, 2)
+pointLight3.position.set(2.13,-3, -1.98) 
+pointLight3.intensity=6.8
 scene.add(pointLight3)
 
 const light3 = gui.addFolder('Light 2')
@@ -66,6 +66,15 @@ light3.add(pointLight3.position, 'x').min(-3).max(3).step(0.01)
 light3.add(pointLight3.position, 'y').min(-3).max(3).step(0.01)
 light3.add(pointLight3.position, 'z').min(-3).max(3).step(0.01)
 light3.add(pointLight3, 'intensity').min(-3).max(3).step(0.01)
+
+const light3Color = {
+    color: 0xff000000
+}
+
+light3.addColor(light3Color, 'color')
+    .onChange(()=> {
+        pointLight3.color.set(light3Color.color)
+    })
 
 const pointLightHelper2 = new THREE.PointLightHelper(pointLight3, 1)
 scene.add(pointLightHelper2)
@@ -120,6 +129,8 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 /**
  * Animate
  */
+
+
 
 const clock = new THREE.Clock()
 
